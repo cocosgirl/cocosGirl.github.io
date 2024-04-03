@@ -1,0 +1,741 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/cocosgirl.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/cocosgirl.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/cocosgirl.github.io/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="框架," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/cocosgirl.github.io/logo.jpg?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;lt; struts-config &amp;gt;是struts的根元素，它主要有8个子元素，DTD定义如下17： &amp;lt; !ELEMENT struts-config(data-sources?,form-beans?,global-exceptions?,global-forwards?,action-mappings?,controller?,message-resources*,plug-i">
+<meta name="keywords" content="框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="struts-config.xml配置文件">
+<meta property="og:url" content="https://github.com/cocosgirl/cocosgirl.github.io/2018/03/02/struts-config配置文件/index.html">
+<meta property="og:site_name" content="cocosgirl">
+<meta property="og:description" content="&amp;lt; struts-config &amp;gt;是struts的根元素，它主要有8个子元素，DTD定义如下17： &amp;lt; !ELEMENT struts-config(data-sources?,form-beans?,global-exceptions?,global-forwards?,action-mappings?,controller?,message-resources*,plug-i">
+<meta property="og:updated_time" content="2024-04-03T05:52:28.863Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="struts-config.xml配置文件">
+<meta name="twitter:description" content="&amp;lt; struts-config &amp;gt;是struts的根元素，它主要有8个子元素，DTD定义如下17： &amp;lt; !ELEMENT struts-config(data-sources?,form-beans?,global-exceptions?,global-forwards?,action-mappings?,controller?,message-resources*,plug-i">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/cocosgirl.github.io/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/cocosgirl/cocosgirl.github.io/2018/03/02/struts-config配置文件/"/>
+
+
+
+
+
+  <title>struts-config.xml配置文件 | cocosgirl</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/cocosgirl.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cocosgirl</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">IT girl</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/cocosgirl.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/cocosgirl.github.io/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/cocosgirl.github.io/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/cocosgirl.github.io/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/cocosgirl.github.io/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://github.com/cocosgirl/cocosgirl.github.io/cocosgirl.github.io/2018/03/02/struts-config配置文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/cocosgirl.github.io/images/myhead.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cocosgirl">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">struts-config.xml配置文件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T10:01:54+08:00">
+                2018-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&lt; struts-config &gt;是struts的根元素，它主要有8个子元素，DTD定义如下17：</p>
+<p>&lt; !ELEMENT struts-config<br>(data-sources?,form-beans?,global-exceptions?,global-forwards?,action-mappings?,controller?,message-resources*,plug-in*)<br>>  </p>
+<p>以上8个元素，下面一一描述：  </p>
+<ol>
+<li>date-sources元素<br>　　date-sources元素用来配置应用程序所需要的数据源。java语言提供了javax.sql.DateSource接口，所有数据源必须实现该接口。如下配置：<blockquote>
+<p>&lt; data-sources&gt;<br>　　&lt; data-source type=”org.apached.commons.dbcp.BasicDataSource”><br>　　　　………………<br>　　&lt; /data-source&gt;<br>&lt; /data-sources&gt;  </p>
+</blockquote>
+</li>
+</ol>
+<p>在Action中访问方式如下：</p>
+<blockquote>
+<p>&gt;<br>javax.sql.DataSource dataSource;<br>java.sql.Connection myConnection;<br>try<br>{<br>　　dataSource = getDataSource(request);<br>　　myConnection　＝　dataSource.getConnection();<br>}<br>…………  </p>
+</blockquote>
+<p>如果是多数据源，可用如下配置：</p>
+<blockquote>
+<p>&gt;<br>&lt; data-sources&gt;<br>　　&lt; data-source key=”a”  type=”org.apached.commons.dbcp.BasicDataSource”&gt;<br>　　　　………………<br>　　&lt; /data-source&gt;<br>　　&lt; data-source key=”b”   type=”org.apached.commons.dbcp.BasicDataSource”&gt;<br>　　　　………………<br>　　&lt; /data-source&gt;<br>&lt; /data-sources&gt;</p>
+</blockquote>
+<p>访问方式：dataSource = getDataSource(request,”a”);</p>
+<p>2.form-beans元素<br>　　该元素主要用来配置表单验证的类。它包含如下属性：<br>　　1.classname：一般用得少，指定和form-bean无素对应的配置类，默认为org.apache.struts.config.FormBeanConfig，如果自定义，则必须扩展FormBeanConfig类。可有可无。<br>　　2.name：ActionForm Bean的惟一标识。必须。<br>　　3.type：ActionForm的完整类名。必须。<br>如下所示：  </p>
+<blockquote>
+<p>&gt;<br>&lt; form-beans&gt;<br>　　&lt; form-bean name=”Loign” type=”com.ha.login”&gt;<br>&lt; /form-beans&gt;</p>
+</blockquote>
+<p>如果是动态Action FormBean，还必须配置form-bean元素的form-property子元素。它包含四个属性，上面三个，还有一个initial 元素：以字符串的形式设置表单字段的初始值，如果没有设置该属性，则是基本类型为0，如果是对象则为null。可有可无。如下所示：  </p>
+<blockquote>
+<p>&gt;<br>&lt; form-beans&gt;<br>　　&lt; form-bean<br>　　　　　　name=”Loign”<br>　　　　　　type=”com.ha.login”&gt;<br>　　　　　&lt; form-property name=”ok”  type=”java.lang.String”/&gt;<br>　　　　　&lt; form-property name=”oks”  type=”java.lang.String”/&gt;<br>　　　　　&lt; form-property name=”okss”  type=”java.lang.Integer” initial=”20”/&gt;<br>　　&lt; /form-bean&gt;<br>&lt; /form-beans&gt;</p>
+</blockquote>
+<p>3.global-exceptions元素<br>　　该元素主要配置异常处理，它的exception子元素代表全局的异常配置。struts采取配置的方式来处理异常。它用来设置java异常和异常处理类org.apache.struts.action.ExceptionHandler之间的映射。它有七个属性，如下所示：<br>　　1. className：指定和exception元素对应的配置类，默认为：org.apache.struts.config.ExceptionConfig。可有可无。<br>　　2. Handler：指定异常得理类，默认为：org.apache.struts.action.ExceptionHandler。可有可无<br>　　3. key：指定在Resource Bundle中描述该异常的消息key<br>　　4. path：指定当异常发生时的转发路径。<br>　　5. scope：指定ActionMessages实例的存放范围，可选值包括：request和session，默认为request。可有可无。<br>　　6. type：指定所需处理异常类的名字，必须。<br>　　7. bundle：指定Resource Bundle<br>如下所示：  </p>
+<blockquote>
+<p>&gt;<br>&lt; global-exceptions&gt;<br>　　&lt; exception key=”global.error.invalidlogin” path=”/error.jsp” scope=”request” type=”com.hn.tree”/&gt;<br>&lt; /global-exceptions&gt;</p>
+</blockquote>
+<p>4.global-forwards元素<br>　　该元素主要用来声明全局的转发关系，它具有以下四个属性：<br>　　1. className：和forward元素对应的配置类，默认为：org.apache.struts.action.ActionForward。可有可无。<br>　　2. contextRelative：此项为true时，表时path属性以＂/＂开头，相对于当前上下文的URL，默认为false．可有可无。　<br>　　3. name：转发路径的逻辑名．必填。<br>　　4. path：转发或重定向的URL，当contextRelative=false时，URL路径相对于当前应用（application），当为ture时，表示URL路径相对于当前上下文（context）。<br>　　5.  redirect：当此项为ture时，表示执行重定向操作。当此项为false时表示转向操作。默认为false。<br>如下所示：  </p>
+<blockquote>
+<p>&gt;<br>&lt; global-forwards&gt;<br>　　&lt; forward  name=”forms1”  path=”/a.do”/&gt;<br>　　&lt; forward  name=”forms2”  path=”/nb.jsp”/&gt;<br>&lt; global-forwards&gt;</p>
+</blockquote>
+<p>5.action-mappings元素<br>　　描述从特定的请求路径到相应的Action类的映射。它具有以下几个属性：<br>　　1. attribute：设置和Action关联的ActionForm Bean在request和session范围内的key。如：Form Bean存在于request范围内，此项设为“myBenas”，则在request.getAttribute(“myBenas”)就可以返回该Bean的实例。<br>　　2. classsName：和action元素对应的配置元素，默认为：org.apache.struts.action.ActionMapping.<br>　　3. forward：转发的URL路径。<br>　　4. include：指定包含的URL路径。<br>　　5. input：输入表单的URL路径，当表单验证失败时，将把请求转发到该URL。<br>　　6. name：指定和Action关联的Action FormBean的名字，该名字必须在Form-Bean定义过。<br>　　7. path：指定访问Action的路径，以“/”开头，无扩展名。<br>　　8. parameter：指定Actgion的配置参数，在Action类的execute()方法中，可以调用ActionMapping对象的getParameter()方法来读取该配置参数。<br>　　9. roles：指定允许调用该Action的安全角色，多个角色之间用，隔开，在处理请求时，RequestProcessor会根据该配置项来决定用户是否有权限调用Action权限。<br>　　10. scope：指定ActionForm Bean的存在范围，可选取为request和session，默认为session。<br>　　11. type：指定Action类的完整类名。<br>　　12. unknown：如果此项为true，表示可以处理用户发出的所有无效的Action URL，默认为false；<br>　　13. validate：指定是否要调用Action FormBean的validate方法，默认值为ture.<br>注：forward、include、type属性只能选中其中一项。<br>如下：  </p>
+<blockquote>
+<p>&gt;<br>&lt; action path=”/search”<br>　　　　type=”zxj.okBean”<br>　　　　name=”a1”<br>　　　　scope=”request”<br>　　　　validate=”true”<br>　　　　input=”/b.jsp”&gt;<br>　　&lt; forward name=”tig” path=”/aa.jsp”/&gt;<br>&lt; /action&gt;</p>
+</blockquote>
+<p>注：此中的forward是指局部的转发路径。global-forwards表示全局的转发路径。</p>
+<p>6.controller元素<br>　　该元素用于配置ActionServlet。它具有以下属性。<br>　　1. bufferSize：指定上载文件的输入缓冲大小，可选，默认为4096<br>　　2. className：指定和controller元素对应的配置类，默认为org.apache.struts.config.ControllerConfig<br>　　3. conentType：字符编码，如果在Action和JSP网页中设置了，则覆盖该设置。<br>　　4. locale：指定是否把Locale对象保存到当前用户的session中，默认值为false.<br>　　5. processorClass：指定负责请求的java类完整路径。<br>　　6. tempDir：指定处理文件的临时工作目录，如果此项没有设置，将采用Servlet容器为web应用分配的临时工作目录。<br>　　7. nochache：如果为true：在响应结果中将加入特定的头参数：Pragma,Cache-Control和Expise，防止页面被保存在客户端的浏览器中，默认为false<br>如下：  </p>
+<blockquote>
+<p>&gt;<br>&lt; controller<br>　　contentType=”text/html;charset=”UTF-8””<br>　　locale=”true”<br>　　processorClass=”con.ok”/&gt;</p>
+</blockquote>
+<p>7.message-resources元素<br>　　主要配置本地化消息文本，它具有以下属性。<br>　　1. className：和message-resources元素对应的配置类，默认为org.apache.struts.config.MessageResourcesConfig。<br>　　2. factory：指定消息资源的工厂类，默认为：org.apache.struts.util.PropertyMessageResourcesFactory类<br>　　3. key：指定Resource Bundle存放的ServletContext对象中时采用的属性Key，默认由Globals.MESSAGES_KEY定义的字符串常量，只允许一个Resource Bundle采用默认的属性Key。<br>　　4. null：指定MessageSources类如何处理未知消息的key，如果为true，则返回空字符串，如果为false，则返回相关字串，默认为false<br>　　5. prameter：指定MessageSources的资源文件名，如果为：a.b.ApplicationResources，则实际对应的文件路径为：WEB-INF/classes/a/b/ApplicationResources.properties.<br>如：  </p>
+<blockquote>
+<p>&gt;<br>&lt; message-resources null=”false” parameter=”defaultResource”/&gt;<br>&lt; message-resources key=”num1” null=”false” parameter=”test”/&gt;  </p>
+</blockquote>
+<p>访问为：</p>
+<blockquote>
+<p>&gt;<br>&lt; bean:message  key=”zxj”/&gt;<br>&lt; bean:message  key=”zxj”  bundle=”num1”/&gt;  </p>
+</blockquote>
+<p>其中，zxj表法，messagesource资源文件中的一个字符串。</p>
+<p>8.plugin-in元素<br>　　配置Struts的插件，属性如下：<br>　　1. className：指定的Struts插件类，必须实现org.apache.struts.action.PlugiIn接口。如：  　</p>
+<blockquote>
+<p>&gt;<br>　&lt; plug-in className=”a.b.c.”&gt;<br>　　&lt; set-property property=”xxx” value=”/WEB-INF/aa.xml”  /&gt;<br>  &lt; /plug-in&gt;  </p>
+</blockquote>
+<p>后记，多模块的配置，可以供多个应用应用不同的struts-config.xml</p>
+<p>文件参考：<a href="http://blog.csdn.net/huozhicheng/article/details/5426356" target="_blank" rel="external">http://blog.csdn.net/huozhicheng/article/details/5426356</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/cocosgirl.github.io/tags/框架/" rel="tag"># 框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/cocosgirl.github.io/2018/01/11/面向对象编程md/" rel="next" title="面向对象编程">
+                <i class="fa fa-chevron-left"></i> 面向对象编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/cocosgirl.github.io/2018/05/18/tornado学习/" rel="prev" title="tornado学习">
+                tornado学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/cocosgirl.github.io/images/myhead.png"
+               alt="zyy" />
+          <p class="site-author-name" itemprop="name">zyy</p>
+           
+              <p class="site-description motion-element" itemprop="description">愿有岁月可回首</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/cocosgirl.github.io/archives">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/cocosgirl.github.io/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zyy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/cocosgirl.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/cocosgirl.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/cocosgirl.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/cocosgirl.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/cocosgirl.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/cocosgirl.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/cocosgirl.github.io/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/cocosgirl.github.io/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/cocosgirl.github.io/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/cocosgirl.github.io/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/cocosgirl.github.io/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/cocosgirl.github.io/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/cocosgirl.github.io/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
